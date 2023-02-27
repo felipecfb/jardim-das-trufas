@@ -1,5 +1,6 @@
 "use client";
 
+import { AuthProvider } from "@/hooks/auth";
 import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
 
@@ -13,7 +14,11 @@ export default function RootLayout({
       <head />
       <body>
         <CacheProvider>
-          <ChakraProvider>{children}</ChakraProvider>
+          <ChakraProvider>
+            <AuthProvider>
+              {children}
+            </AuthProvider>
+          </ChakraProvider>
         </CacheProvider>
       </body>
     </html>
