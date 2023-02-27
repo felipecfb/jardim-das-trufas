@@ -1,9 +1,26 @@
 "use client";
 
 import { Form } from "@/components/Form";
+import { useAuth } from "@/hooks/auth";
 import { Box, Flex, Image } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function SignIn() {
+  const { user, loginWithGoogle } = useAuth();
+
+  const router = useRouter();
+
+  function handleLoginWithGoogle() {
+    loginWithGoogle();
+  }
+
+  useEffect(() => {
+    if (user !== null) {
+      router.push("/")
+    }
+  }, [user]);
+
   return (
     <Flex
       w="100vw"
@@ -15,7 +32,7 @@ export default function SignIn() {
     >
       <Box p="4" boxShadow="md" bg="white" borderRadius="8">
         <Image src="../logo.png" alt="Logo" maxW="150px" mx="auto" />
-        <Form />
+        <Form loginWithGoogle={handleLoginWithGoogle} />
       </Box>
     </Flex>
   );

@@ -10,6 +10,7 @@ type User = UserInfo;
 
 interface AuthContextProps {
   user: User | null;
+  loginWithGoogle: () => void;
 }
 
 

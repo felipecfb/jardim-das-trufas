@@ -5,7 +5,11 @@ import { PasswordInput } from "./PasswordInput";
 import { FaUserAlt } from "react-icons/fa";
 import { AiFillGoogleCircle } from "react-icons/ai";
 
-export function Form() {
+interface FormProps {
+  loginWithGoogle: () => void;
+}
+
+export function Form({ loginWithGoogle }: FormProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleShowClick = () => setShowPassword(!showPassword);
@@ -24,6 +28,7 @@ export function Form() {
         _hover={{
           bg: "transparent",
         }}
+        onClick={loginWithGoogle}
       >
         <AiFillGoogleCircle size="100%" />
       </Button>
