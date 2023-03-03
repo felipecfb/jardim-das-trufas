@@ -1,4 +1,11 @@
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  inMemoryPersistence,
+  onAuthStateChanged,
+  setPersistence,
+  signInWithPopup,
+  signInWithRedirect,
+} from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContextProps, AuthProviderProps, User } from "./types";
 import { auth } from "../firebase/config";
@@ -17,35 +24,21 @@ function AuthProvider({ children }: AuthProviderProps) {
   function loginWithGoogle() {
     signInWithPopup(auth, provider)
       .then((result) => {
-        const { user } = result;
-
+        const user = result.user;
         setUser(user);
 
         router.push("/");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
   }
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setUser(user);
-        } else {
-            setUser(null);
-        }
-        setLoading(false);
-    });
-
-    return () => unsubscribe();
-}, []);
 
   return (
     <AuthContext.Provider
       value={{
         user,
-        loginWithGoogle
+        loginWithGoogle,
       }}
     >
       {children}

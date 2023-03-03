@@ -12,11 +12,11 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-let firebase_app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(firebase_app);
+const auth = getAuth(app);
 
 export {
-  firebase_app,
+  app,
   auth
 };

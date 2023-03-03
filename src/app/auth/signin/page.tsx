@@ -11,13 +11,9 @@ export default function SignIn() {
 
   const router = useRouter();
 
-  function handleLoginWithGoogle() {
-    loginWithGoogle();
-  }
-
   useEffect(() => {
-    if (user !== null) {
-      router.push("/")
+    if (user) {
+      router.push("/");
     }
   }, [user]);
 
@@ -32,7 +28,7 @@ export default function SignIn() {
     >
       <Box p="4" boxShadow="md" bg="white" borderRadius="8">
         <Image src="../logo.png" alt="Logo" maxW="150px" mx="auto" />
-        <Form loginWithGoogle={handleLoginWithGoogle} />
+        <Form loginWithGoogle={loginWithGoogle} />
       </Box>
     </Flex>
   );
