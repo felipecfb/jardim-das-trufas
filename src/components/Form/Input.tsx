@@ -6,19 +6,19 @@ import {
   Input as ChakraInput,
   InputRightElement,
   Button,
-} from "@chakra-ui/react";
-import { ReactNode } from "react";
+} from '@chakra-ui/react'
+import { ReactNode } from 'react'
 
 interface InputProps {
-  type: string;
-  placeholder: string;
-  leftIcon: ReactNode;
-  rightIcon?: ReactNode | null;
-  onClick?: () => void;
+  type: string
+  placeholder: string
+  leftIcon: ReactNode
+  rightIcon?: ReactNode | null
+  onClick?: () => void
 }
 
 export function Input({
-  type = "text",
+  type = 'text',
   placeholder,
   leftIcon,
   rightIcon,
@@ -39,7 +39,7 @@ export function Input({
                 bg="transparent"
                 onClick={onClick}
                 _hover={{
-                  bg: "none",
+                  bg: 'none',
                 }}
               >
                 {rightIcon}
@@ -49,5 +49,5 @@ export function Input({
         </InputGroup>
       </FormControl>
     </div>
-  );
+  )
 }

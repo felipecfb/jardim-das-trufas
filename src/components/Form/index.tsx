@@ -1,18 +1,18 @@
-import { Button, Stack, Text } from "@chakra-ui/react";
-import { useState } from "react";
-import { Input } from "./Input";
-import { PasswordInput } from "./PasswordInput";
-import { FaUserAlt } from "react-icons/fa";
-import { AiFillGoogleCircle } from "react-icons/ai";
+import { Button, Stack, Text } from '@chakra-ui/react'
+import { useState } from 'react'
+import { Input } from './Input'
+import { PasswordInput } from './PasswordInput'
+import { FaUserAlt } from 'react-icons/fa'
+import { AiFillGoogleCircle } from 'react-icons/ai'
 
 interface FormProps {
-  loginWithGoogle: () => void;
+  loginWithGoogle: () => void
 }
 
 export function Form({ loginWithGoogle }: FormProps) {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false)
 
-  const handleShowClick = () => setShowPassword(!showPassword);
+  const handleShowClick = () => setShowPassword(!showPassword)
 
   return (
     <Stack
@@ -26,7 +26,7 @@ export function Form({ loginWithGoogle }: FormProps) {
         width="20%"
         mx="auto"
         _hover={{
-          bg: "transparent",
+          bg: 'transparent',
         }}
         onClick={loginWithGoogle}
       >
@@ -42,11 +42,11 @@ export function Form({ loginWithGoogle }: FormProps) {
         width="full"
         bg="#F9AE99"
         _hover={{
-          filter: "opacity(.8)",
+          filter: 'opacity(.8)',
         }}
       >
         Entrar
       </Button>
     </Stack>
-  );
+  )
 }

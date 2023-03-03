@@ -1,16 +1,16 @@
-import { FaLock } from "react-icons/fa";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Input } from "./Input";
+import { FaLock } from 'react-icons/fa'
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import { Input } from './Input'
 
 interface PasswordInputProps {
-  showPassword: boolean;
-  onClick: () => void;
+  showPassword: boolean
+  onClick: () => void
 }
 
 export function PasswordInput({ showPassword, onClick }: PasswordInputProps) {
   return (
     <Input
-      type={showPassword ? "text" : "password"}
+      type={showPassword ? 'text' : 'password'}
       placeholder="Senha"
       leftIcon={<FaLock />}
       rightIcon={
@@ -22,5 +22,5 @@ export function PasswordInput({ showPassword, onClick }: PasswordInputProps) {
       }
       onClick={onClick}
     />
-  );
+  )
 }

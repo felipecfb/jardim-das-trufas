@@ -1,37 +1,29 @@
-import {
-  GoogleAuthProvider,
-  inMemoryPersistence,
-  onAuthStateChanged,
-  setPersistence,
-  signInWithPopup,
-  signInWithRedirect,
-} from "firebase/auth";
-import { createContext, useContext, useEffect, useState } from "react";
-import { AuthContextProps, AuthProviderProps, User } from "./types";
-import { auth } from "../firebase/config";
-import { useRouter } from "next/navigation";
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { createContext, useContext, useState } from 'react'
+import { AuthContextProps, AuthProviderProps, User } from './types'
+import { auth } from '../firebase/config'
+import { useRouter } from 'next/navigation'
 
-const AuthContext = createContext({} as AuthContextProps);
+const AuthContext = createContext({} as AuthContextProps)
 
 function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null)
 
-  const provider = new GoogleAuthProvider();
+  const provider = new GoogleAuthProvider()
 
-  const router = useRouter();
+  const router = useRouter()
 
   function loginWithGoogle() {
     signInWithPopup(auth, provider)
       .then((result) => {
-        const user = result.user;
-        setUser(user);
+        const user = result.user
+        setUser(user)
 
-        router.push("/");
+        router.push('/')
       })
       .catch((error) => {
-        console.log(error);
-      });
+        console.log(error)
+      })
   }
 
   return (
@@ -43,13 +35,13 @@ function AuthProvider({ children }: AuthProviderProps) {
     >
       {children}
     </AuthContext.Provider>
-  );
+  )
 }
 
 function useAuth() {
-  const context = useContext(AuthContext);
+  const context = useContext(AuthContext)
 
-  return context;
+  return context
 }
 
-export { AuthProvider, useAuth };
+export { AuthProvider, useAuth }

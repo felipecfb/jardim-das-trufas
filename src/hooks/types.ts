@@ -1,21 +1,16 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
-import { UserInfo } from "firebase/auth"
+import { UserInfo } from 'firebase/auth'
 
 interface AuthProviderProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
-type User = UserInfo;
+type User = UserInfo
 
 interface AuthContextProps {
-  user: User | null;
-  loginWithGoogle: () => void;
+  user: User | null
+  loginWithGoogle: () => void
 }
 
-
-export type {
-  AuthProviderProps,
-  AuthContextProps,
-  User
-}
+export type { AuthProviderProps, AuthContextProps, User }
