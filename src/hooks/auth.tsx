@@ -1,5 +1,5 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import { AuthContextProps, AuthProviderProps, User } from './types'
 import { auth } from '../firebase/config'
 import { useRouter } from 'next/navigation'
@@ -19,12 +19,20 @@ function AuthProvider({ children }: AuthProviderProps) {
         const user = result.user
         setUser(user)
 
-        router.push('/')
+        router.push('/dashboard')
       })
       .catch((error) => {
         console.log(error)
       })
   }
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user)
+    })
+
+    return unsubscribe
+  }, [])
 
   return (
     <AuthContext.Provider

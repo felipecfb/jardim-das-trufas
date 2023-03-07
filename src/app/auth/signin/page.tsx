@@ -3,9 +3,19 @@
 import { Form } from '@/components/Form'
 import { useAuth } from '@/hooks/auth'
 import { Box, Flex, Image } from '@chakra-ui/react'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function SignIn() {
-  const { loginWithGoogle } = useAuth()
+  const { loginWithGoogle, user } = useAuth()
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard')
+    }
+  }, [])
 
   return (
     <Flex

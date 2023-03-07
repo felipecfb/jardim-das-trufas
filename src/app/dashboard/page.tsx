@@ -1,7 +1,11 @@
+import { PrivateRoute } from '@/components/PrivateRoute'
+
 export default function Dashboard() {
   return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
+    <PrivateRoute>
+      <div>
+        <h1>Dashboard</h1>
+      </div>
+    </PrivateRoute>
   )
 }
